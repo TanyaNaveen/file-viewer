@@ -1,7 +1,6 @@
 import React, { ChangeEvent } from 'react';
-import './App.css';
-import Viewer from './Viewer'
-import SelectFolder from './SelectFolder'
+import Viewer from './components/Viewer'
+import SelectFolder from './components/SelectFolder'
 import Dropdown from './Dropdown'
 
 function App() {
@@ -28,7 +27,7 @@ function App() {
   
   if (page.kind == "home") {
     return (<div className="App">
-      <SelectFolder setOptions={setOptions} />
+      <SelectFolder data-testid="model-select" setOptions={setOptions} />
       <p>Choose a folder:</p>
       <select defaultValue={''} onChange={(evt: ChangeEvent<HTMLSelectElement>) => {selectFolder(evt.target.value)}}>
         {options}

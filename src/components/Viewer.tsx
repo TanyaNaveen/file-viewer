@@ -1,6 +1,6 @@
 import { ChangeEvent, useEffect } from "react"
 import React from "react"
-import './Viewer.css';
+import Display from "./Display";
 
 interface props {
     folder: string;
@@ -48,6 +48,7 @@ const Viewer = (props: props) => {
         <select defaultValue={''} onChange={(evt: ChangeEvent<HTMLSelectElement>) => {setFileToDisplay(evt.target.value)}}>
             {files}
         </select>
+        <Display dir={props.folder} fileName={fileToDisplay}/>
         <div><button onClick = {props.handleBack}>Back</button></div>
     </div>
 }
