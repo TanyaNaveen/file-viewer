@@ -49,14 +49,13 @@ const Display = (props: props) => {
         }
     }, [props.dir, props.fileName]); // Effect will run when runid, fileName, or setFile changes
     
-    if (props.fileName.endsWith(".jpg") || props.fileName.endsWith(".png")) {
+    if (props.fileName.endsWith(".jpg") || props.fileName.endsWith(".png") || props.fileName.endsWith(".svg")) {
         return <ImageDisplay folder={props.dir} fileName={props.fileName} data={data}/>; 
     } else if(props.fileName.endsWith(".py") || props.fileName.endsWith(".txt")) {
         return <TextDisplay codeString={data}/>
     } else {
         return <></>
     }
-    
 };
 
 export default Display
