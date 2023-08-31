@@ -11,10 +11,13 @@ const SUPPORTED_FILE_TYPES = [".png", ".jpg", ".png", ".py", ".svg", ".pdf", ".t
 
 const Viewer = (props: props) => {
 
+    // all files to display in dropdown
     const [files, setFiles] = React.useState<JSX.Element[]>([]);
+    // particular file to display contents
     const [fileToDisplay, setFileToDisplay] = React.useState("")
 
     useEffect(() => {
+        // given the folder, fetch files
         const fetchFiles = async () => {
             const response = await fetch(`/${props.folder}/directory.json`)
               .then((response) => response.json())
@@ -24,20 +27,12 @@ const Viewer = (props: props) => {
         };
           
         fetchFiles().then((dirData: { file: string }[]) => {
-            const options: string[] = []
-            dirData.forEach(({ file }) => {
-              options.push(file)
-            });
-
-            // create an array of JSX elements so it's easy to display in the dropdown
-            const dropdownOptions: JSX.Element[] = [];
-            dropdownOptions.push(<option key={-1} value={''}>Choose an option</option>)
-            // create an element corresponding to each file
-            for (let i = 0; i < options.length; i++) {
-                dropdownOptions.push(<option key={i} value={options[i]}>{options[i]}</option>);
+            // create an array of elements to use for the dropdown
+            const options: JSX.Element[] = []
+            for (let i = 0; i < dirData.length; i++) {
+                options.push(<option key={i} value={dirData[i].file}>{dirData[i].file}</option>);
             }
-
-            setFiles(dropdownOptions)
+            setFiles(options)
         });
 
     }, []);

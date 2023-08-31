@@ -9,7 +9,7 @@ function App() {
 
   const [page, changePage] = React.useState<{kind: Page, folder: string}>({kind: 'home', folder: ''})
   const [folder, selectFolder] = React.useState("")
-  const [file, selectFile] = React.useState("")
+  // const [file, selectFile] = React.useState("")
   const [options, setOptions] = React.useState<JSX.Element[]>([]);
 
   const handleGoClick = () => {
@@ -23,6 +23,7 @@ function App() {
 
   const handleBackClick = () => {
     changePage({kind: "home", folder: ""})
+    selectFolder("")
   }
   
   if (page.kind == "home") {
