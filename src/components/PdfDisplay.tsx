@@ -1,7 +1,7 @@
 import React from "react";
 import { Document, Page, pdfjs } from 'react-pdf';
 import type { PDFDocumentProxy } from 'pdfjs-dist';
-import "./PdfDisplay.css"
+import "./styles/PdfDisplay.css"
 import 'react-pdf/dist/esm/Page/AnnotationLayer.css';
 import 'react-pdf/dist/esm/Page/TextLayer.css';
 
