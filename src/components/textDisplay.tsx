@@ -8,6 +8,8 @@ import { CopyToClipboard } from "react-copy-to-clipboard";
 const TextDisplay = ({ codeString }: { codeString: string }) => {
   const [copied, setCopied] = useState(false);
 
+  console.log("called text display"); // it's getting called twice. we don't want that...
+
   // Function to handle copying to clipboard
   const copy = () => {
     setCopied(true);

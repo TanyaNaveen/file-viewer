@@ -46,6 +46,7 @@
     ]
   },
   "devDependencies": {
-    "@types/react-copy-to-clipboard": "^5.0.4"
+    "@types/react-copy-to-clipboard": "^5.0.4",
+    "react-pdf": "^7.3.3"
   }
 }

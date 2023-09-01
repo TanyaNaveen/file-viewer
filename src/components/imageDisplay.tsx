@@ -11,11 +11,15 @@ const ImageDisplay = ({
   fileName: string; // The name of the image file
   data: string; // The binary blob data of the image
 }) => {
+
+  console.log("called image display");
+
+
   // define zoom in, zoom out, and reset operations 
   const Controls = () => {
     const { zoomIn, zoomOut, resetTransform } = useControls();
     return (
-      <div className="zoom">
+      <div className="control-buttons">
         <button onClick={() => zoomIn()}>{<ZoomIn />}</button>
         <button onClick={() => zoomOut()}><ZoomOut /></button>
         <button onClick={() => resetTransform()}>Reset</button>

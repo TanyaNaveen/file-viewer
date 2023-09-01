@@ -11,6 +11,8 @@ const SUPPORTED_FILE_TYPES = [".png", ".jpg", ".png", ".py", ".svg", ".pdf", ".t
 
 const Viewer = (props: props) => {
 
+    console.log("viewer called")
+
     // all files to display in dropdown
     const [files, setFiles] = React.useState<JSX.Element[]>([]);
     // particular file to display contents
@@ -29,6 +31,7 @@ const Viewer = (props: props) => {
         fetchFiles().then((dirData: { file: string }[]) => {
             // create an array of elements to use for the dropdown
             const options: JSX.Element[] = []
+            options.push(<option key={-1} value={''}>Choose a file</option>)            
             for (let i = 0; i < dirData.length; i++) {
                 options.push(<option key={i} value={dirData[i].file}>{dirData[i].file}</option>);
             }
@@ -44,7 +47,7 @@ const Viewer = (props: props) => {
             {files}
         </select>
         <Display dir={props.folder} fileName={fileToDisplay}/>
-        <div><button onClick = {props.handleBack}>Back</button></div>
+        <div><button className = "back-button" onClick = {props.handleBack}>Back</button></div>
     </div>
 }
 

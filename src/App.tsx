@@ -9,19 +9,19 @@ function App() {
 
   const [page, changePage] = React.useState<{kind: Page, folder: string}>({kind: 'home', folder: ''})
   const [folder, selectFolder] = React.useState("")
-  // const [file, selectFile] = React.useState("")
   const [options, setOptions] = React.useState<JSX.Element[]>([]);
 
   const handleGoClick = () => {
     // switch page, pass in folder as prop to Viewer
     if (folder == "") {
-      alert("Please choose a folder");
+      alert("Please choose a folder"); // don't switch unless a folder has been selected
     } else {
       changePage({kind: "view", folder: folder})
     }
   }
 
   const handleBackClick = () => {
+    // switch back to home page
     changePage({kind: "home", folder: ""})
     selectFolder("")
   }

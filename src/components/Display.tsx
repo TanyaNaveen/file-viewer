@@ -2,16 +2,22 @@ import React from "react";
 import { useEffect } from "react";
 import ImageDisplay from "./imageDisplay";
 import TextDisplay from "./textDisplay";
+import PdfDisplay from "./PdfDisplay";
 
 interface props {
     dir: string
     fileName: string
 }
 
+type PDFFile = File | null;
+
 const Display = (props: props) => {
 
-    const [data, setData] = React.useState("")
+    console.log("display called")
 
+
+    const [data, setData] = React.useState("")
+    const [pdfFile, setPdfFile] = React.useState<PDFFile>(null)
     useEffect(() => {
         if (props.fileName === "") {
             return; // If the file name is empty, do nothing
@@ -40,19 +46,29 @@ const Display = (props: props) => {
                 });
             setData(response);
         };
+
+        const getPdfData = async () => {
+            const res = await fetch(`/${props.dir}/${props.fileName}`);
+            const blob = await res.blob();
+            setPdfFile(new File ([blob], "pdf")) // converting blob to File
+        }
     
         // Determine whether the file is an image or not
         if (props.fileName.endsWith(".png") || props.fileName.endsWith(".jpg")) {
             fetchImage(); // Fetch and display image files
+        } else if (props.fileName.endsWith(".pdf")) {
+            getPdfData(); // Fetch pdf files
         } else {
             getFile(); // Fetch and display other types of files
         }
-    }, [props.dir, props.fileName]); // Effect will run when runid, fileName, or setFile changes
+    }, [props.dir, props.fileName]); // Effect will run when folder or fileName changes
     
     if (props.fileName.endsWith(".jpg") || props.fileName.endsWith(".png") || props.fileName.endsWith(".svg")) {
         return <ImageDisplay folder={props.dir} fileName={props.fileName} data={data}/>; 
     } else if(props.fileName.endsWith(".py") || props.fileName.endsWith(".txt")) {
         return <TextDisplay codeString={data}/>
+    } else if (pdfFile && props.fileName.endsWith(".pdf")) {
+        return <PdfDisplay data={pdfFile} name={props.fileName}/>
     } else {
         return <></>
     }
