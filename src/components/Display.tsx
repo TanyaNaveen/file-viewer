@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
-import ImageDisplay from "./imageDisplay";
-import TextDisplay from "./textDisplay";
+import ImageDisplay from "./ImageDisplay";
+import TextDisplay from "./TextDisplay";
 import PdfDisplay from "./PdfDisplay";
 
 interface props {
