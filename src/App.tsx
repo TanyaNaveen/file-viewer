@@ -1,6 +1,7 @@
 import React, { ChangeEvent } from 'react';
 import Viewer from './components/Viewer'
 import SelectFolder from './components/SelectFolder'
+import Dropdown from './Dropdown'
 
 function App() {
   
@@ -35,8 +36,33 @@ function App() {
       <button onClick = {handleGoClick}>Go</button>
     </div>)
   } else {
-    return <Viewer folder={folder} handleBack={handleBackClick}/>
+    return (<Viewer folder={folder} handleBack={handleBackClick}/>)
   } 
+
+  // if (page.kind == "home") {
+  //   return (<div className="App">
+  //     <Dropdown folder={"."} setElement={setOptions}/>
+  //     {/* <SelectFolder setOptions={setOptions} /> */}
+  //     <p>Choose a folder:</p>
+  //     <select defaultValue={''} onChange={(evt: ChangeEvent<HTMLSelectElement>) => {selectFolder(evt.target.value)}}>
+  //       {options}
+  //     </select>
+  //     <button onClick = {handleGoClick}>Go</button>
+  //   </div>)
+  // } else {
+  //   return (
+  //   <div>
+  //     <Dropdown folder={folder} setElement={setOptions}/>
+  //     <p>{folder}</p>
+  //     <p>Choose a file:</p>
+  //     <select defaultValue={''} onChange={(evt: ChangeEvent<HTMLSelectElement>) => {selectFile(evt.target.value)}}>
+  //         {options}
+  //     </select>
+  //     <button onClick = {handleBackClick}>Back</button>
+  //     </div>)
+  // } 
+
+
 }
 
 export default App;
