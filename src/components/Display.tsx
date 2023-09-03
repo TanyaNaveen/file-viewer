@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import ImageDisplay from "./imageDisplay";
 import TextDisplay from "./textDisplay";
 import PdfDisplay from "./PdfDisplay";
+import styles from "./styles/Display.module.css";
 
 interface props {
     dir: string
@@ -64,11 +65,17 @@ const Display = (props: props) => {
     }, [props.dir, props.fileName]); // Effect will run when folder or fileName changes
     
     if (props.fileName.endsWith(".jpg") || props.fileName.endsWith(".png") || props.fileName.endsWith(".svg")) {
-        return <ImageDisplay folder={props.dir} fileName={props.fileName} data={data}/>; 
+        return (<div className={styles.container}>
+            <ImageDisplay folder={props.dir} fileName={props.fileName} data={data}/>
+        </div>) 
     } else if(props.fileName.endsWith(".py") || props.fileName.endsWith(".txt")) {
-        return <TextDisplay codeString={data}/>
+        return (<div className={styles.container}>
+            <TextDisplay codeString={data}/>
+        </div>)
     } else if (pdfFile && props.fileName.endsWith(".pdf")) {
-        return <PdfDisplay data={pdfFile} name={props.fileName}/>
+        return (<div className={styles.container}>
+            <PdfDisplay data={pdfFile} name={props.fileName}/>
+        </div>)
     } else {
         return <></>
     }

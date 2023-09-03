@@ -1,6 +1,10 @@
 import { ChangeEvent, useEffect } from "react"
 import React from "react"
 import Display from "./Display";
+import styles from "./styles/Viewer.module.css"
+import Dropdown from 'react-dropdown';
+import "./styles/Dropdown.css";
+
 
 interface props {
     folder: string;
@@ -11,10 +15,8 @@ const SUPPORTED_FILE_TYPES = [".png", ".jpg", ".png", ".py", ".svg", ".pdf", ".t
 
 const Viewer = (props: props) => {
 
-    console.log("viewer called")
-
     // all files to display in dropdown
-    const [files, setFiles] = React.useState<JSX.Element[]>([]);
+    const [files, setFiles] = React.useState<string[]>([]);
     // particular file to display contents
     const [fileToDisplay, setFileToDisplay] = React.useState("")
 
@@ -30,24 +32,32 @@ const Viewer = (props: props) => {
           
         fetchFiles().then((dirData: { file: string }[]) => {
             // create an array of elements to use for the dropdown
-            const options: JSX.Element[] = []
-            options.push(<option key={-1} value={''}>Choose a file</option>)            
+            const options: string[] = []
+            // options.push(<option key={-1} value={''}>Choose a file</option>)            
             for (let i = 0; i < dirData.length; i++) {
-                options.push(<option key={i} value={dirData[i].file}>{dirData[i].file}</option>);
+                // options.push(<option key={i} value={dirData[i].file}>{dirData[i].file}</option>);
+                options.push(dirData[i].file)
             }
             setFiles(options)
         });
 
     }, []);
+
+    const handleChange = (evt: any) => {
+        if (evt.label != undefined) {
+            setFileToDisplay(evt.label)
+        }
+    }
+
     
-    return <div className='Viewer'> 
-        <h4>{ props.folder }</h4>
-        <p>Choose a file:</p>
+    return <div className={styles.viewer}> 
+        {/* <p>Choose a file:</p>
         <select defaultValue={''} onChange={(evt: ChangeEvent<HTMLSelectElement>) => {setFileToDisplay(evt.target.value)}}>
             {files}
-        </select>
+        </select> */}
+        <Dropdown options={files} value={fileToDisplay} onChange={handleChange} placeholder="Select an option" />
         <Display dir={props.folder} fileName={fileToDisplay}/>
-        <div><button className = "back-button" onClick = {props.handleBack}>Back</button></div>
+        <div><button className = {styles.back} onClick = {props.handleBack}>Back</button></div>
     </div>
 }
 

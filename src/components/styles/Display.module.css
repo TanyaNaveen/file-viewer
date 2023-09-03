@@ -1,0 +1,15 @@
+.body {
+    margin: auto;
+}
+
+.container {
+    background-color: white;
+    margin: auto;
+    /* margin-left: 5rem; */
+    /* margin-right: 5rem; */
+    margin-top: 3vh;
+    border-radius: 12px;
+    width: 65vw;
+    height: 55vh;
+    max-height: 55vh;
+}

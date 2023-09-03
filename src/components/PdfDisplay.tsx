@@ -1,7 +1,7 @@
 import React from "react";
 import { Document, Page, pdfjs } from 'react-pdf';
 import type { PDFDocumentProxy } from 'pdfjs-dist';
-import "./PdfDisplay.css"
+import styles from "./styles/PdfDisplay.module.css"
 import 'react-pdf/dist/esm/Page/AnnotationLayer.css';
 import 'react-pdf/dist/esm/Page/TextLayer.css';
 
@@ -29,15 +29,13 @@ const PdfDisplay = (props: props) => {
     }
 
     return (
-        <div> 
-          <header>
-              <h1>{props.name}</h1>
-          </header>
+        <div className={styles.pdf}> 
+          <header className={styles.header}></header>
     
-          <div className="Example">
+          <div className={styles.Example}>
             
-            <div className="Example__container">
-              <div className="Example__container__document">
+            <div className={styles.Example__container}>
+              <div className={styles.Example__container__document}>
                 <Document file={props.data} onLoadSuccess={onDocumentLoadSuccess}>
                   {Array.from(new Array(numPages), (__, index) => (
                     <Page key={`page_${index + 1}`} pageNumber={index + 1} />

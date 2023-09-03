@@ -3,6 +3,7 @@ import SyntaxHighlighter from "react-syntax-highlighter";
 import { vscDarkPlus as stylesheet } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import { BiCopy as CopyIcon, BiCheck as CheckIcon } from "react-icons/bi";
 import { CopyToClipboard } from "react-copy-to-clipboard";
+import styles from "./styles/TextDisplay.module.css";
 
 // Define the TextDisplay component
 const TextDisplay = ({ codeString }: { codeString: string }) => {

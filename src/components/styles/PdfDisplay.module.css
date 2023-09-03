@@ -1,8 +1,12 @@
-
-  
-  header {
-    width: 50rem;
-    height: 3rem;
+.pdf {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+  .header {
+    width: 55vw;
+    height: 3vh;
     margin: auto;
     background-color: #323639;
     box-shadow: 0 0 12px rgba(0, 0, 0, 0.5);
@@ -11,7 +15,7 @@
     padding: 10px 0;
   }
 
-  header h1 {
+  .header h1 {
     font-size: inherit;
     margin: 0;
   }
@@ -56,8 +60,8 @@
   }
 
   .Example {
-    width: 50rem;
-    height: 35rem;
+    width: 55vw;
+    height: 35vh;
     background-color: #525659;
     margin: auto;
     overflow-y: scroll;
