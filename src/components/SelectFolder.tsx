@@ -17,7 +17,7 @@ const SelectFolder = (props: props) => {
     useEffect(() => {
         // fetch list of all folders in public directory
         const fetchFolder = async () => {
-            const response = await fetch(`/./directory.json`)
+            const response = await fetch(`/./data/directory.json`)
               .then((response) => response.json())
               .then((v) => v)
               .catch((err) => console.log(err));

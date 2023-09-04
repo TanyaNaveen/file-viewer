@@ -6,7 +6,7 @@ import PdfDisplay from "./PdfDisplay";
 import styles from "./styles/Display.module.css";
 
 interface props {
-    dir: string
+    runID: string
     fileName: string
 }
 
@@ -14,11 +14,9 @@ type PDFFile = File | null;
 
 const Display = (props: props) => {
 
-    console.log("display called")
-
-
     const [data, setData] = React.useState("")
     const [pdfFile, setPdfFile] = React.useState<PDFFile>(null)
+
     useEffect(() => {
         if (props.fileName === "") {
             return; // If the file name is empty, do nothing
@@ -29,7 +27,7 @@ const Display = (props: props) => {
         // It then converts the blob to an object URL
         // It then sets the file with the setFile function
         const fetchImage = async () => {
-            const res = await fetch(`/${props.dir}/${props.fileName}`);
+            const res = await fetch(`/data/${props.runID}/${props.fileName}`);
             const imageBlob = await res.blob();
             const imageObjectURL = URL.createObjectURL(imageBlob);
             setData(imageObjectURL);
@@ -38,7 +36,7 @@ const Display = (props: props) => {
         // This function fetches the file from the server
         // It then sets the file with the setFile function
         const getFile = async () => {
-            const response = await fetch(`/${props.dir}/${props.fileName}`)
+            const response = await fetch(`/data/${props.runID}/${props.fileName}`)
                 .then((response) => response.text())
                 .then((v) => v)
                 .catch((err) => {
@@ -49,7 +47,7 @@ const Display = (props: props) => {
         };
 
         const getPdfData = async () => {
-            const res = await fetch(`/${props.dir}/${props.fileName}`);
+            const res = await fetch(`/data/${props.runID}/${props.fileName}`);
             const blob = await res.blob();
             setPdfFile(new File ([blob], "pdf")) // converting blob to File
         }
@@ -62,17 +60,18 @@ const Display = (props: props) => {
         } else {
             getFile(); // Fetch and display other types of files
         }
-    }, [props.dir, props.fileName]); // Effect will run when folder or fileName changes
+    }, [props.runID, props.fileName]); // Effect will run when folder or fileName changes
     
-    if (props.fileName.endsWith(".jpg") || props.fileName.endsWith(".png") || props.fileName.endsWith(".svg")) {
+    // this needs to be case insensitive
+    if (props.fileName.toLowerCase().endsWith(".jpg") || props.fileName.toLowerCase().endsWith(".png") || props.fileName.toLowerCase().endsWith(".svg")) {
         return (<div className={styles.container}>
-            <ImageDisplay folder={props.dir} fileName={props.fileName} data={data}/>
+            <ImageDisplay folder={props.runID} fileName={props.fileName} data={data}/>
         </div>) 
-    } else if(props.fileName.endsWith(".py") || props.fileName.endsWith(".txt")) {
+    } else if(props.fileName.toLowerCase().endsWith(".py") || props.fileName.toLowerCase().endsWith(".txt") || props.fileName.toLowerCase().endsWith(".ant")) {
         return (<div className={styles.container}>
             <TextDisplay codeString={data}/>
         </div>)
-    } else if (pdfFile && props.fileName.endsWith(".pdf")) {
+    } else if (pdfFile && props.fileName.toLowerCase().endsWith(".pdf")) {
         return (<div className={styles.container}>
             <PdfDisplay data={pdfFile} name={props.fileName}/>
         </div>)

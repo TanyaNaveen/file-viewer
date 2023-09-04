@@ -11,7 +11,7 @@ interface props {
     handleBack: () => void;
 }
 
-const SUPPORTED_FILE_TYPES = [".png", ".jpg", ".png", ".py", ".svg", ".pdf", ".txt"];
+const SUPPORTED_FILE_TYPES = [".png", ".jpg", ".png", ".py", ".svg", ".pdf", ".txt", ".ant"];
 
 const Viewer = (props: props) => {
 
@@ -23,7 +23,7 @@ const Viewer = (props: props) => {
     useEffect(() => {
         // given the folder, fetch files
         const fetchFiles = async () => {
-            const response = await fetch(`/${props.folder}/directory.json`)
+            const response = await fetch(`/data/${props.folder}/directory.json`)
               .then((response) => response.json())
               .then((v) => v)
               .catch((err) => console.log(err));
@@ -35,9 +35,22 @@ const Viewer = (props: props) => {
             const options: string[] = []
             // options.push(<option key={-1} value={''}>Choose a file</option>)            
             for (let i = 0; i < dirData.length; i++) {
+                // only want to add it if it is a supported file type
+                const fileName: string = dirData[i].file;
+
+                for (const fileType of SUPPORTED_FILE_TYPES) {
+                    if (fileName.toLowerCase().endsWith(fileType)) {
+                      options.push(fileName);
+                      break;
+                    }
+                }
+                
                 // options.push(<option key={i} value={dirData[i].file}>{dirData[i].file}</option>);
-                options.push(dirData[i].file)
+                // options.push(dirData[i].file)
             }
+
+            
+      
             setFiles(options)
         });
 
@@ -51,12 +64,8 @@ const Viewer = (props: props) => {
 
     
     return <div className={styles.viewer}> 
-        {/* <p>Choose a file:</p>
-        <select defaultValue={''} onChange={(evt: ChangeEvent<HTMLSelectElement>) => {setFileToDisplay(evt.target.value)}}>
-            {files}
-        </select> */}
         <Dropdown options={files} value={fileToDisplay} onChange={handleChange} placeholder="Select an option" />
-        <Display dir={props.folder} fileName={fileToDisplay}/>
+        <Display runID={props.folder} fileName={fileToDisplay}/>
         <div><button className = {styles.back} onClick = {props.handleBack}>Back</button></div>
     </div>
 }
