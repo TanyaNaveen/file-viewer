@@ -20,10 +20,10 @@ const TextDisplay = ({ codeString }: { codeString: string }) => {
   };
 
   return (
-    <div className = "text-container">
+    <div className = {styles.text_container}>
       
       {/* SyntaxHighlighter component for code display */}
-      <div className="text-viewer">
+      <div className={styles.text_viewer}>
         <SyntaxHighlighter
           language="markup" // Specify the code language (markup or python if .py)
           style={stylesheet} // Apply the selected code highlighting style
@@ -34,7 +34,7 @@ const TextDisplay = ({ codeString }: { codeString: string }) => {
         </SyntaxHighlighter>
 
         {/* Display copy button inside display */}
-        <div className="copy-button">
+        <div className={styles.copy_button}>
           <CopyToClipboard text={codeString} onCopy={copy}>
             <button>  
               {copied ? <CheckIcon /> : <CopyIcon />}

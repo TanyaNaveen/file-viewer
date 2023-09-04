@@ -1,0 +1,45 @@
+.image {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    /* max-height: 30vh; */
+  }
+
+  /* .container {
+    background-color: green;
+    justify-content: center;
+    align-items: center;
+  } */
+
+  .control_buttons {
+    padding-top: 5vh;
+    display: flex;
+    /* width: 5rem; */
+    justify-content: center;
+    align-items: center;
+    /* position: absolute;
+    bottom: 10vh; */
+  }
+  
+  .control_buttons button {
+    margin-bottom: 2vh;
+    margin-right: 0.5vh;
+    /* background-color: #9CCADE; */
+    background-color: rgb(178, 178, 178);
+    border: none;
+    border-radius: 0.5rem;
+    color: white;
+    height: 4vh;
+    /* font-size: medium; */
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+  }
+
+.ZoomIn, .ZoomOut {
+    font-size: large;
+}
+  
+  

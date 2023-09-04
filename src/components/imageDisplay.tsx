@@ -1,5 +1,6 @@
 import { TransformWrapper, TransformComponent, useControls } from "react-zoom-pan-pinch";
 import { BiZoomIn as ZoomIn, BiZoomOut as ZoomOut } from "react-icons/bi";
+import styles from "./styles/ImageDisplay.module.css"
 
 // Define the ImageDisplay component
 const ImageDisplay = ({
@@ -19,13 +20,22 @@ const ImageDisplay = ({
   const Controls = () => {
     const { zoomIn, zoomOut, resetTransform } = useControls();
     return (
-      <div className="control-buttons">
-        <button onClick={() => zoomIn()}>{<ZoomIn />}</button>
-        <button onClick={() => zoomOut()}><ZoomOut /></button>
+      <div className={styles.control_buttons}>
+        <button className={styles.ZoomIn} onClick={() => zoomIn()}>{<ZoomIn />}</button>
+        <button className={styles.ZoomOut} onClick={() => zoomOut()}><ZoomOut /></button>
         <button onClick={() => resetTransform()}>Reset</button>
       </div>
     );
   };
+
+  // const Controls2 = () => {
+  //   const {  resetTransform } = useControls();
+  //   return (
+  //     <div className={styles.control_buttons}>
+  //       <button onClick={() => resetTransform()}>Reset</button>
+  //     </div>
+  //   )
+  // }
 
   return (
     // Wrap the image with TransformWrapper for zooming and panning functionality
@@ -36,13 +46,13 @@ const ImageDisplay = ({
       }}
     >
       {/* Display the list of controls */}
+      
       <Controls />
-
       {/* Apply zooming and panning to the Image component */}
       <TransformComponent wrapperStyle={{ width: "100%", height: "100%" }} contentStyle={{ width: "100%", height: "100%" }}>
         {/* <img src={data} alt={fileName} width={300} height={300}/> */}
-        <img src={`/${folder}/${fileName}`} alt={fileName} width={300} height={300}/>
-      </TransformComponent>
+        <img className = {styles.image} src={`/${folder}/${fileName}`} alt={fileName} width={300} height={300}/>
+      </TransformComponent>   
     </TransformWrapper>
   );
 };

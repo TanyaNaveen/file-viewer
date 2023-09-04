@@ -9,11 +9,8 @@ body {
   text-align: center;
   font-size: large;
 
-  padding-left: 5vh;  
-  padding-top: 2.5vh;
-
-  background-color: rgb(193, 213, 236);
-
+  /* padding-left: 5vh;  
+  padding-top: 2.5vh; */
 }
 
 code {
@@ -21,30 +18,33 @@ code {
     monospace;
 }
 
-img {
+/* img {
   display: block;
   margin-left: auto;
   margin-right: auto;
 }
 
-.text-viewer {
-  margin-left: auto;
-  margin-right: auto;
-  width: 75vh;
-  position: relative
-}
-
-
 .control-buttons button {
   margin-right: 0.5vh;
 }
 
-select {
-  width: 20vh;
-  margin-bottom: 5vh;
-}
+.control-buttons {
+  margin-bottom: 2vh;
+} */
 
-.copy-button {
+
+
+/* .text-viewer {
+  margin-left: auto;
+  margin-right: auto;
+  width: 75vh;
+  position: relative
+} */
+
+
+
+
+/* .copy-button {
   position: absolute;
   right: 0;
   top: 0;
@@ -57,12 +57,14 @@ select {
   border-width: 2px; 
   color: #ffffff; 
   --bg-opacity: 0.5; 
-}
+} */
 
-.back-button {
-  margin-top: 5vh;
-}
+/* .back-button {
+  margin-top: 500vh;
+} */
 
-.control-buttons {
-  margin-bottom: 2vh;
-}
+
+/* select {
+  width: 20vh;
+  margin-bottom: 5vh;
+} */

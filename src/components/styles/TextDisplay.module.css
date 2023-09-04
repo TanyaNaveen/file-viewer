@@ -1,14 +1,16 @@
-
+.text_container {
+    padding-top: 5vh;
+}
 
 .text_viewer {
     margin-left: auto;
     margin-right: auto;
-    width: 75vh;
-    position: relative
+    width: 50vw;
+    position: relative;
   }
   
 
-.copy-button {
+.copy_button {
     position: absolute;
     right: 0;
     top: 0;
