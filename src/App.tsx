@@ -11,8 +11,8 @@ function App() {
 
   // switch to viewer page, set folder
   const handleGoClick = (folder: string) => {
-    if (folder == "") {
-      alert("Please choose a folder"); // don't switch unless a folder has been selected
+    if (folder === "") {
+      alert("Please choose a folder"); // don't proceed unless a folder has been selected
     } else {
       changePage({kind: "view", folder: folder})
     }
@@ -25,7 +25,7 @@ function App() {
   
   return (
     <div>
-      {(page.kind == "home") ? <SelectFolder handleGo={handleGoClick}/> : <Viewer folder={page.folder} handleBack={handleBackClick}/>}
+      {(page.kind === "home") ? <SelectFolder handleGo={handleGoClick}/> : <Viewer folder={page.folder} handleBack={handleBackClick}/>}
     </div>
   )
 }

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Document, Page, pdfjs } from 'react-pdf';
 import type { PDFDocumentProxy } from 'pdfjs-dist';
 import styles from "./styles/PdfDisplay.module.css"
@@ -12,15 +12,28 @@ pdfjs.GlobalWorkerOptions.workerSrc = new URL(
   import.meta.url,
 ).toString();
 
+// define type
+type PDFFile = File | null;
 
-interface props {
-    data: File,
-    name: string
-}
+// define component PdfDisplay
+const PdfDisplay = (
+  { runID, fileName }: { runID: string, fileName: string }
+) => {
 
-const PdfDisplay = (props: props) => {
-
+    const [pdfFile, setPdfFile] = React.useState<PDFFile>(null)
     const [numPages, setNumPages] = React.useState<number>();
+
+    // fetch the pdf data
+    // convert it to a blob, then create File object
+    useEffect(() => { 
+      const getPdfData = async () => {
+        const res = await fetch(`/data/${runID}/${fileName}`);
+        const blob = await res.blob();
+        setPdfFile(new File ([blob], "pdf")) // converting blob to File
+      }
+
+      getPdfData();
+    }, [runID, fileName])
 
     // sets page numbers
     // should try to do something with this, maybe display in the header
@@ -28,15 +41,15 @@ const PdfDisplay = (props: props) => {
         setNumPages(nextNumPages);
     }
 
-    return (
+    if (pdfFile) {
+      return (
         <div className={styles.pdf}> 
           <header className={styles.header}></header>
     
           <div className={styles.Example}>
-            
             <div className={styles.Example__container}>
               <div className={styles.Example__container__document}>
-                <Document file={props.data} onLoadSuccess={onDocumentLoadSuccess}>
+                <Document file={pdfFile} onLoadSuccess={onDocumentLoadSuccess}>
                   {Array.from(new Array(numPages), (__, index) => (
                     <Page key={`page_${index + 1}`} pageNumber={index + 1} />
                   ))}
@@ -46,6 +59,9 @@ const PdfDisplay = (props: props) => {
           </div>
         </div>
       );
+    } else {
+      return <></>
     }
+  }
 
 export default PdfDisplay

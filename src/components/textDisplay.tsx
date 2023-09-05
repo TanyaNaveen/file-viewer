@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { vscDarkPlus as stylesheet } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import { BiCopy as CopyIcon, BiCheck as CheckIcon } from "react-icons/bi";
@@ -6,10 +6,29 @@ import { CopyToClipboard } from "react-copy-to-clipboard";
 import styles from "./styles/TextDisplay.module.css";
 
 // Define the TextDisplay component
-const TextDisplay = ({ codeString }: { codeString: string }) => {
-  const [copied, setCopied] = useState(false);
+const TextDisplay = (
+  { runID, fileName }: { runID: string, fileName: string }
+) => {
 
-  console.log("called text display"); // it's getting called twice. we don't want that...
+  const [copied, setCopied] = useState(false);
+  const [data, setData] = useState("")
+
+  // fetch text data and save it as a string
+  useEffect(() => { 
+    const getFile = async () => {
+      const response = await fetch(`/data/${runID}/${fileName}`)
+          .then((response) => response.text())
+          .then((v) => v)
+          .catch((err) => {
+            console.log(err);
+            return "";
+          });
+      setData(response);
+    };
+
+    getFile();
+  }, [runID, fileName])
+
 
   // Function to handle copying to clipboard
   const copy = () => {
@@ -30,12 +49,12 @@ const TextDisplay = ({ codeString }: { codeString: string }) => {
           showLineNumbers={true} // Show line numbers
           customStyle={{ margin: "0" }} // Apply custom styling to the syntax highlighter
           lineNumberContainerStyle={{ minWidth: "4.25em" }} // Styling for line number container
-        >{codeString} {/* Display the code content */}
+        >{data} {/* Display the code content */}
         </SyntaxHighlighter>
 
         {/* Display copy button inside display */}
         <div className={styles.copy_button}>
-          <CopyToClipboard text={codeString} onCopy={copy}>
+          <CopyToClipboard text={data} onCopy={copy}>
             <button>  
               {copied ? <CheckIcon /> : <CopyIcon />}
             </button>
