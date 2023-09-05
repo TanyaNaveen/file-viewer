@@ -39,7 +39,8 @@ const ImageDisplay = ({
 
   return (
     // Wrap the image with TransformWrapper for zooming and panning functionality
-    <TransformWrapper
+    <div className={styles.image_container}>
+      <TransformWrapper
       centerZoomedOut={true} // Center the image when zoomed out
       doubleClick={{
         mode: 'reset' // Allow double click to reset the zoom
@@ -54,6 +55,8 @@ const ImageDisplay = ({
         <img className = {styles.image} src={`/data/${folder}/${fileName}`} alt={fileName} width={300} height={300}/>
       </TransformComponent>   
     </TransformWrapper>
+
+    </div>
   );
 };
 
