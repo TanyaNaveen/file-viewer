@@ -23,11 +23,11 @@
     background-color: #9CCADE; 
     color: white;
     border: none;
-    border-radius: 1vw;
+    border-radius: 25px;
     height: 3vh;
-    width: 5vw;
+    width: 5rem;
 
     position: absolute;
-    right: 11vh;
+    right: 5.75vw;
     bottom: 4vh;
 }

@@ -1,6 +1,6 @@
-.Dropdown {
+/* .Dropdown {
     margin: auto;
-}
+} */
 
 .arrow-closed, .arrow-open {
     border: solid #ffffff;
@@ -47,6 +47,33 @@
     transition: all 200ms ease;
     color: white;
 }
+
+.Dropdown-menu {
+    margin: auto;
+
+    background-color: white;
+    border: 1px solid #ccc;
+    /* border-radius: 12px; */
+
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
+    box-sizing: border-box;
+    /* margin-top: -1px;
+    margin-left: 5vh; */
+
+    max-height: 150px;
+    overflow-y: auto;
+    position: relative;
+    /* left: 6vh; */
+    /* top: 100%;
+    left: 5vw; */
+    /* right: 50%; */
+    width: 65vw;
+    z-index: 1000;
+    -webkit-overflow-scrolling: touch;
+
+    border-bottom-right-radius: 12px;
+    border-bottom-left-radius: 12px;
+}
   
 .Dropdown-control:hover {
     box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
@@ -80,31 +107,7 @@
     border-width: 0 5px 5px;
 }
 
-.Dropdown-menu {
-    margin: auto;
 
-    background-color: white;
-    border: 1px solid #ccc;
-    /* border-radius: 12px; */
-
-    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
-    box-sizing: border-box;
-    /* margin-top: -1px;
-    margin-left: 5vh; */
-
-    max-height: 150px;
-    overflow-y: auto;
-    position: absolute;
-    top: 100%;
-    left: 5vw;
-    /* right: 50%; */
-    width: 65vw;
-    z-index: 1000;
-    -webkit-overflow-scrolling: touch;
-
-    border-bottom-right-radius: 12px;
-    border-bottom-left-radius: 12px;
-}
   
 .Dropdown-menu .Dropdown-group > .Dropdown-title {
     padding: 8px 10px;
