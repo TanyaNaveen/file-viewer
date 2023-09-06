@@ -29,7 +29,7 @@
   
 .Dropdown-control {
     margin: auto;
-    margin-top: 8vh;
+    margin-top: 5vh;
     /* margin-left: 5rem;
     margin-right: 5rem;
     margin-top: 5rem; */
@@ -78,6 +78,7 @@
 }
   
 .Dropdown-control:hover {
+    background-color: #87b3c6;
     box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
 }
  

@@ -29,5 +29,9 @@
 
     position: absolute;
     right: 5.75vw;
-    bottom: 4vh;
+    bottom: 5vh;
+}
+
+.back:hover {
+    background-color: #88b3c6; 
 }

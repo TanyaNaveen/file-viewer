@@ -28,9 +28,9 @@ body {
 
 
 .goButton {
-    background-color: rgb(178, 178, 178);
+    background-color: rgb(191, 191, 191);
     border: none;
-    border-radius: 1vw;
+    border-radius: 12px;
     color: white;
     font-size: medium;
     padding-left: 2rem;
@@ -41,5 +41,6 @@ body {
     position: relative
 }
 
-
-
+.goButton:hover {
+    background-color: rgb(168, 168, 168);
+}

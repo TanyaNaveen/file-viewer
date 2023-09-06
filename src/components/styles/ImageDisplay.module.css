@@ -33,6 +33,10 @@
 
 }
 
+.control_buttons button:hover {
+  background-color: rgb(142, 142, 142);
+}
+
 .ZoomIn, .ZoomOut {
   font-size: large;
 }
