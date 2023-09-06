@@ -10,8 +10,13 @@ import 'react-pdf/dist/esm/Page/TextLayer.css';
 // const url = `//cdn.jsdelivr.net/npm/pdfjs-dist@7.3.3/build/pdf.worker.min.js`
 // pdfjs.GlobalWorkerOptions.workerSrc = url
 
-pdfjs.GlobalWorkerOptions.workerSrc = './pdf.worker.min.3.6.172.js';
+// pdfjs.GlobalWorkerOptions.workerSrc = './pdf.worker.min.3.6.172.js';
 
+import "pdfjs-dist/build/pdf.worker.entry";
+pdfjs.GlobalWorkerOptions.workerSrc = new URL(
+  'pdfjs-dist/build/pdf.worker.min.js',
+  import.meta.url,
+).toString();
 
 // import worker
 // pdfjs.GlobalWorkerOptions.workerSrc = new URL(
