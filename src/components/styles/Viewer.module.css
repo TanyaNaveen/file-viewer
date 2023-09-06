@@ -1,9 +1,4 @@
-
 .viewer {
-    /* display: flex;
-    justify-content: center;
-    align-items: center; */
-
     position: absolute;
     top: 50%;
     left: 50%;
@@ -24,9 +19,8 @@
     color: white;
     border: none;
     border-radius: 25px;
-    height: 3vh;
-    width: 5rem;
-
+    padding: 0.4rem 1.5rem 0.4rem 1.5rem;
+    font-size: medium;
     position: absolute;
     right: 5.75vw;
     bottom: 5vh;

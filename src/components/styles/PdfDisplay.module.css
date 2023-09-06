@@ -22,29 +22,32 @@
   background-color: #525659;
   margin: auto; 
   overflow-y: scroll; 
-  /* overflow-x: auto; */
+  overflow-x: scroll;
   box-shadow: 0 0 12px rgba(0, 0, 0, 0.5);
 }
 
 .Example__container {
-
-
   margin: auto;
   display: flex;
-  /* flex-direction: column; */
   align-items: center;
   justify-content: center;
-  /* margin: 0px 0; */
-  /* padding: 10px; */
 }
-/*     
+
+/* Fix PDF displaying for smaller screens*/
+@media screen and (max-width: 1000px) {
+  .Example__container {
+    display:block;
+  }
+}
+
+    
   .Example__container__document .react-pdf__Document {
     display: flex;
     flex-direction: column;
     align-items: center;
-  } */
+  }
   
-  /* .Example__container__document .react-pdf__Page {
+  .Example__container__document .react-pdf__Page {
     max-width: calc(100% - 2em);
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
     margin: 1em;
@@ -58,5 +61,5 @@
   .Example__container__document .react-pdf__message {
     padding: 20px;
     color: white;
-  } */
+  } 
 

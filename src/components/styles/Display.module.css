@@ -5,15 +5,11 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-
-    /* margin-left: 5rem; */
-    /* margin-right: 5rem; */
     margin-top: 2vh;
     margin-bottom: 2vh;
     border-radius: 12px;
     width: 65vw;
     height: 55vh;
-    /* max-height: 55vh; */
 }
 
 .img {
