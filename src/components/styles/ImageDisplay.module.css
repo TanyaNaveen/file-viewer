@@ -1,5 +1,6 @@
 .image {
   margin: auto;
+  max-height: 40vh;
 }
 
 .image_container {

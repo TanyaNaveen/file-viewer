@@ -5,7 +5,7 @@ body {
     align-items: center;
 }
 
-.container {
+/* .container { */
     /* display: flex;
     justify-content: center;
     align-items: center; */
@@ -24,7 +24,7 @@ body {
     
     border-radius: 25px;
     box-shadow: 0 0 5px rgba(49, 62, 73, 0.5); */
-}
+/* } */
 
 
 .goButton {

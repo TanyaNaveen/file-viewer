@@ -32,7 +32,7 @@ const ImageDisplay = (
 
         {/* Apply zooming and panning to the Image component */}
         <TransformComponent wrapperStyle={{ width: "100%", height: "100%" }} contentStyle={{ width: "100%", height: "100%" }}>
-          <img className = {styles.image} src={`/data/${folder}/${fileName}`} alt={fileName} width={300} height={300}/>
+          <img className = {styles.image} src={`/data/${folder}/${fileName}`} alt={fileName}/>
         </TransformComponent>   
       </TransformWrapper>
     </div>

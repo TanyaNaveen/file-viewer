@@ -37,6 +37,8 @@
     width: 65vw;
     position: relative;
     overflow: hidden;
+    /* text-overflow: ellipsis; */
+
     background-color: #9CCADE;
     border-radius: 12px;
     box-sizing: border-box;
