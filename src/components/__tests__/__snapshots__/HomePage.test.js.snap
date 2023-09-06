@@ -1,0 +1,83 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home Page go button: does nothing when no option selected 1`] = `
+<div>
+  <div
+    class="container"
+  >
+    <div
+      class="dropdown"
+      data-testid="dropdown"
+    >
+      <div
+        class="Dropdown-root"
+      >
+        <div
+          aria-haspopup="listbox"
+          class="Dropdown-control"
+        >
+          <div
+            class="Dropdown-placeholder"
+          >
+            Select an option
+          </div>
+          <div
+            class="Dropdown-arrow-wrapper"
+          >
+            <span
+              class="Dropdown-arrow"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <button
+      class="goButton"
+      data-testid="button"
+    >
+      Go
+    </button>
+  </div>
+</div>
+`;
+
+exports[`Home Page renders Home page correctly 1`] = `
+<div>
+  <div
+    class="container"
+  >
+    <div
+      class="dropdown"
+      data-testid="dropdown"
+    >
+      <div
+        class="Dropdown-root"
+      >
+        <div
+          aria-haspopup="listbox"
+          class="Dropdown-control"
+        >
+          <div
+            class="Dropdown-placeholder"
+          >
+            Select an option
+          </div>
+          <div
+            class="Dropdown-arrow-wrapper"
+          >
+            <span
+              class="Dropdown-arrow"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <button
+      class="goButton"
+      data-testid="button"
+    >
+      Go
+    </button>
+  </div>
+</div>
+`;

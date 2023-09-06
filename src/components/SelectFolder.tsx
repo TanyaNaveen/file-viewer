@@ -44,10 +44,11 @@ const SelectFolder = (
     
     return (
         <div className={styles.container}>
-            <div className={styles.dropdown}>
-                <Dropdown options={options} value={currFolder} onChange={handleChange} placeholder="Select an option" />
-                <button className={styles.goButton} onClick={() => handleGo(currFolder)}>Go</button>
+            <div className={styles.dropdown} data-testid="dropdown">
+                <Dropdown  options={options} value={currFolder} onChange={handleChange} placeholder="Select an option" />
             </div>
+            <button className={styles.goButton} data-testid="button" onClick={() => handleGo(currFolder)}>Go</button>
+
         </div>
     )
 }
