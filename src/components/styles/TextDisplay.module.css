@@ -9,6 +9,7 @@
     position: relative;
     max-height: 45vh;
     overflow-y: scroll;
+    text-align: left;
   }
   
 

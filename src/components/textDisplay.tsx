@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import SyntaxHighlighter from "react-syntax-highlighter";
-import { vscDarkPlus as stylesheet } from "react-syntax-highlighter/dist/cjs/styles/prism";
+import { vs2015 as stylesheet} from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import { BiCopy as CopyIcon, BiCheck as CheckIcon } from "react-icons/bi";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import styles from "./styles/TextDisplay.module.css";
+
 
 // Define the TextDisplay component
 const TextDisplay = (
@@ -38,13 +39,15 @@ const TextDisplay = (
     }, 2500);
   };
 
+  console.log(fileName.toLowerCase().endsWith(".py"))
+
   return (
     <div className = {styles.text_container}>
       
       {/* SyntaxHighlighter component for code display */}
       <div className={styles.text_viewer}>
         <SyntaxHighlighter
-          language="markup" // Specify the code language (markup or python if .py)
+          language={fileName.toLowerCase().endsWith(".py") ? "python" : "text"} // Specify code language - text or python for .py files
           style={stylesheet} // Apply the selected code highlighting style
           showLineNumbers={true} // Show line numbers
           customStyle={{ margin: "0" }} // Apply custom styling to the syntax highlighter
