@@ -6,78 +6,114 @@
 }
 
 .header {
-  width: 55vw;
-  height: 12vh;
-  position: relative;
-  margin: auto;
   background-color: #323639;
-  box-shadow: 0 0 12px rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index:1;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.buttons button {
+  margin-right: 1vw;
+  margin-top: 0.5vw;
+  margin-bottom: 0.5vw;
+
+  background-color: transparent;
+  border: none;
+  border-radius: 0.5rem;
   color: white;
   text-align: center;
-  padding: 10px 0;
-}
-
-.pageNav p {
-  display: inline-block;
-  margin-right: 1vw;
-}
-
-.pageNav .pageNum {
-  margin-left: 1vw;
-  width: 4vw;
-}
+  font-size: large;
+  padding: 0.5rem;
 
 
-
-.zoom {
-  width: 3vw;
-  background-color: green;
-}
-
-.Example {
-  width: 55vw;
-  height: 31vh;
-  background-color: #525659;
-  margin: auto; 
-  overflow-y: scroll; 
-  overflow-x: scroll;
-  box-shadow: 0 0 12px rgba(0, 0, 0, 0.5);
-}
-
-.Example__container {
-  margin: auto;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
+
+.buttons button:hover {
+  background-color: #525659;
+}
+
+
+.Example {
+  height: 40vh;
+  overflow-y: scroll; 
+  background-color: #525659; 
+}
+
+.Example__container {
+  /* margin: auto; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: center; */
+  margin: 10px 0;
+  padding: 10px;
+}
+
+.Example__container__load {
+  margin-top: 1em;
+  color: white;
+}
+
+.Example__container__document {
+  margin: auto;
+  /* padding-top: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: center; */
+}
+
+.Example__container__document .react-pdf__Document {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  /* justify-content: center; */
+}
+
+.Example__container__document .react-pdf__Page {
+  max-width: 100%;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+  /* margin: 1em; */
+  /* display: flex;
+  align-items: center;
+  justify-content: center; */
+
+}
+
+.Example__container__document .react-pdf__Page canvas {
+  max-width: 100%;
+  height: auto !important;
+  /* width: 10px; */
+  /* display: flex;
+  align-items: center;
+  justify-content: center; */
+
+}
+
+.Example__container__document .react-pdf__message {
+  padding: 20px;
+  color: white;
+} 
+
+
+
 /* Fix PDF displaying for smaller screens*/
-@media screen and (max-width: 1000px) {
+/* @media screen and (max-width: 1000px) {
   .Example__container {
     display:block;
   }
 }
-
+ */
     
-  .Example__container__document .react-pdf__Document {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .Example__container__document .react-pdf__Page {
-    max-width: calc(100% - 2em);
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
-    margin: 1em;
-  }
-  
-  .Example__container__document .react-pdf__Page canvas {
-    max-width: 100%;
-    height: auto !important;
-  }
-  
-  .Example__container__document .react-pdf__message {
-    padding: 20px;
-    color: white;
-  } 
-
